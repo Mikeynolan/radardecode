@@ -10,7 +10,7 @@ The code includes more than 7,000 lines of C code. Most of this code has been in
 
 # Requirements
 
-- Compilation and execution require bash, csh, tcsh, make, gcc, Perl (for printbyteorder)
+- Compilation and execution require bash, csh, tcsh, make, gcc, Perl (for printbyteorder) and tclsh (for drv\_fft\_pwr.sc)
   
 - FFTW (version >= 3.3.8)
 

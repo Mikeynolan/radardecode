@@ -145,7 +145,7 @@ char *USAGE = "Usage: convdatatype -q -i{i1,i2,i4,f4,f8} -o{i2,i4,f4,f8}";
 		   break;
 	  case 'i':
 			strncpy(cbuf,optarg,2);
-			cbuf[3]=0;
+			cbuf[2]=0;
 			to_lowercase(cbuf);
 			if ((!strcmp(cbuf,"i1")) || 
 			 	(!strcmp(cbuf,"i2")) || 
@@ -159,7 +159,7 @@ char *USAGE = "Usage: convdatatype -q -i{i1,i2,i4,f4,f8} -o{i2,i4,f4,f8}";
 			break;
 	  case 'o':
 			strncpy(cbuf,optarg,2);
-			cbuf[3]=0;
+			cbuf[2]=0;
 			to_lowercase(cbuf);
 			if ( (!strcmp(cbuf,"i2")) || 
 			  	(!strcmp(cbuf,"i4")) || 
