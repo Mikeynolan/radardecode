@@ -1,6 +1,8 @@
 #!/bin/sh 
 # \
-if [ -x /usr/S2local/bin/tclsh8.3 ];then exec /usr/S2local/bin/tclsh8.3 $0 "$@" ; else exec /usr/bin/tclsh $0 "$@" ;fi
+if [ -x /opt/anaconda/bin/tclsh ] ; then exec /opt/anaconda/bin/tclsh $0 "$@" ; else exec /usr/bin/tclsh $0 "$@" ; fi
+#
+# Note: Change path to tclsh above if this doesn't work.
 #
 # drv_fft_pwr.sc [-d -c ] firstfile numfiles
 #	..   
