@@ -2,6 +2,8 @@
 # \
 if [ -x /usr/S2local/bin/tclsh8.3 ];then exec /usr/S2local/bin/tclsh8.3 $0 "$@" ; else exec /usr/bin/tclsh $0 "$@" ;fi
 #
+# NOTE: If this doens't run, you need to change the paths to tclsh above.
+#
 # drv_fft_pwr.sc [-d -c ] firstfile numfiles
 #	..   
 #	operate on decoded files.
