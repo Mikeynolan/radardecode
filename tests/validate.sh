@@ -30,11 +30,11 @@ paste correct_hdp2.cmp result_hdp2.cmp > hdp2.cmp
 cat hdp2.cmp | awk '{if(($1-$2)/$1>0.0001 || ($1-$2)/$1<-0.0001) print ($1-$2)/$1}' >> err
 
 
-if [ $(du -k err | cut -f1) -eq "0" ];then # test passed because comparison shows no meaningful differences
+if [ ! -s err ] ; then # test passed because comparison shows no meaningful differences
         cw_param_1=1; 
 fi
 
-if [ $(du -k result_hdp1.cmp | cut -f1) -eq "0" ];then # test failed because output file size is 0
+if [ ! -s result_hdp1.cmp ] ; then # test failed because output file size is 0
     cw_param_1=0;
 fi
 
@@ -76,7 +76,7 @@ paste correct_hd.cmp result_hd.cmp > scaled.cmp
 
 cat scaled.cmp | awk '{if(($1-$2)/$1>0.001 || ($1-$2)/$1<-0.001) print ($1-$2)/$1}' > err
 
-if [ $(du -k err | cut -f1) -eq "0" ];then # test passed because comparison shows no meaningful differences
+if [ ! -s err ] ; then # test passed because comparison shows no meaningful differences
     u4_param_1=1; else u4_param_1=0;
 fi
 
