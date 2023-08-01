@@ -1,0 +1,17 @@
+#ifndef INCbitmasksh
+#define INCbitmasksh
+/* bit masks */
+/*
+ *  bitmasks_4 unsigned long mask 0 thru 32 bits
+ *  index with the length of the mask you want 
+*/
+;
+unsigned int bitmasks_4[]={ 0,
+		1        ,3        ,7        ,0xf,
+		0x1f     ,0x3f     ,0x7f     ,0xff,
+		0x1ff    ,0x3ff    ,0x7ff    ,0xfff,
+		0x1fff   ,0x3fff   ,0x7fff   ,0xffff,
+		0x1ffff  ,0x3ffff  ,0x7ffff  ,0xfffff,
+		0x1fffff ,0x3fffff ,0x7fffff ,0xffffff,
+		0x1ffffff,0x3ffffff,0x7ffffff,0xfffffff};
+#endif
