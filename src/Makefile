@@ -3,14 +3,16 @@
 #       compilation and link flags are defined here
 #
 SHELL=/bin/csh
-CFLAGS=-O3 -I. -I../include -I/opt/local/include
-LFLAGS=-L/opt/local/lib
+CFLAGS=-O3 -I. -I../include -I/data/PIRL1/radar/include
+LFLAGS=-L/data/PIRL1/radar/lib
+# Define SWAPEM on a little-endian machine: the IDL expects bigendian data.
+SWAPFLAG=-DSWAPEM
 
 
-all: radardecode rotate selectpnts scaletosigma makefits mapsmerge radarfft avgdata stripVme unpriV zerofill fftfilter power_ao convdatatype
+all: radardecode rotate selectpnts scaletosigma makefits mapsmerge radarfft avgdata stripVme unpriV zerofill fftfilter power_ao convdatatype printhdrV stripAzEl byteswap
 
 clean:
-	rm *.o
+	\rm *.o
 
 #comppncode: comppncode.c to_lowercase.o comppnc_init.o comppnc_shiftit.o
 #	$(CC) $(CFLAGS) comppncode.c to_lowercase.o comppnc_init.o comppnc_shiftit.o -lm -o $(GLOBDIR)/comppncode
@@ -60,6 +62,15 @@ power_ao: power_ao.c read_pipe.o
 convdatatype: convdatatype.c read_pipe.o to_lowercase.o
 	$(CC) $(CFLAGS) convdatatype.c read_pipe.o to_lowercase.o -lm -o $(GLOBDIR)/convdatatype
 
+printhdrV: printhdrV.c ../libsrc/libaohdr.a
+	$(CC) $(CFLAGS) printhdrV.c ../libsrc/libaohdr.a  -lm -o $(GLOBDIR)/printhdrV
+
+
+stripAzEl: stripAzEl.c tandgain.c
+	$(CC) $(CFLAGS) $(SWAPFLAG) stripAzEl.c tandgain.c -lm -o $(GLOBDIR)/stripAzEl
+
+byteswap: byteswap.c
+	$(CC) $(CFLAGS) byteswap.c -o $(GLOBDIR)/byteswap
 
 comppnc_init.o:	 comppnc_init.c ; $(CC) $(CFLAGS) -c comppnc_init.c
 comppnc_shiftit.o:	 comppnc_shiftit.c ; $(CC) $(CFLAGS) -c comppnc_shiftit.c
